@@ -1,7 +1,13 @@
+using DataAccessLayer.Model.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Database Connection
+builder.Services.AddDbContext<OnnoRokomInventoryContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("OnnoRokom")));
 
 var app = builder.Build();
 
