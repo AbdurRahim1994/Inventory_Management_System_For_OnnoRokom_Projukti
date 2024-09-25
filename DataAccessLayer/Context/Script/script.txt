@@ -1,0 +1,2 @@
+﻿-- Scaffold script for Inventory Management database
+scaffold-DbContext "Data Source = .; Initial Catalog = Inventory_Mgmt_OnnoRokom_Projukti; Trusted_Connection = True; Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;" Microsoft.EntityFrameworkCore.SqlServer -Project DataAccessLayer -OutputDir "Model" -ContextDir "Model/Context" -Context "OnnoRokomInventoryContext" -f
