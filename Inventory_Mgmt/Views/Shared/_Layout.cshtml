@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/Inventory_Mgmt.styles.css" asp-append-version="true" />
 	<link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/sweetalert2/sweetalert2.css" rel="stylesheet"/>
 </head>
 <body>
     <header>
@@ -20,11 +21,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserRegistration">Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserLogin">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -45,6 +52,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

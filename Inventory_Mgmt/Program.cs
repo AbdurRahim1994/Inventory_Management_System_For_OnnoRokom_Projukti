@@ -1,5 +1,9 @@
 using DataAccessLayer.Model.Context;
+using DataAccessLayer.Repository;
+using DataAccessLayer.Service;
 using Microsoft.EntityFrameworkCore;
+using ServiceLayer.Repository;
+using ServiceLayer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,11 @@ builder.Services.AddControllersWithViews();
 
 // Database Connection
 builder.Services.AddDbContext<OnnoRokomInventoryContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("OnnoRokom")));
+
+#region Dependency Injection
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
+#endregion
 
 var app = builder.Build();
 

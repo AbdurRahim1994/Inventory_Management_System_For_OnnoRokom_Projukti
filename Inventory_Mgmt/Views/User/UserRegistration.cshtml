@@ -1,0 +1,90 @@
+﻿@model DataAccessLayer.ViewModel.UserRegistrationVM;
+@{
+    ViewData["Title"] = "UserRegistration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-4 mt-5">
+        <fieldset class="border p-2">
+            <legend class="text-center fw-bold">Registration :</legend>
+            <div class="col-md-12 mt-2 px-2">
+                <label>User Name</label>
+                <input type="text" class="form-control" id="username" />
+            </div>
+
+            <div class="col-md-12 mt-2 px-2">
+                <label>Email</label>
+                <input type="email" class="form-control" id="email" />
+            </div>
+
+            <div class="col-md-12 mt-2 px-2">
+                <label>Mobile</label>
+                <input type="number" class="form-control" id="mobile" />
+            </div>
+
+            <div class="col-md-12 mt-2 px-2">
+                <label>Address</label>
+                <input type="text" class="form-control" id="address" />
+            </div>
+
+            <div class="col-md-12 mt-2 px-2">
+                <label>Password</label>
+                <input type="password" class="form-control" id="password" />
+            </div>
+
+            <div class="col-md-12 mt-2 px-2">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" />
+            </div>
+
+            <div class="col-md-12 mt-3 px-2">
+                <input type="button" class="btn btn-success" value="Registration" id="btnRegistration" />
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $("#btnRegistration").on("click", function () {
+            var registration = {
+                UserName:$("#username").val(),
+                Email:$("#email").val(),
+                MobileNo:$("#mobile").val(),
+                Address:$("#address").val(),
+                Password:$("#password").val(),
+                ConfirmPassword:$("#confirmPassword").val()
+            }
+            $.ajax({
+                url: '@Url.Action("UserRegistration", "User")',
+                type: 'POST',
+                data: JSON.stringify(registration),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    if (data == "1") {
+                        Swal.fire({
+                            title: "Sorry !",
+                            text: "User already exists",
+                            icon: "warning"
+                        });
+                    }
+                    else 
+                    {
+                        Swal.fire({
+                            title: "OK",
+                            text: "User registration successful",
+                            icon: "success"
+                        });
+                    }
+                }
+            })
+        })
+    </script>
+}
